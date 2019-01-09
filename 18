@@ -1,0 +1,39 @@
+#include <stdio.h> 
+int main()
+{
+    long long int n,m,flag;
+    while(scanf("%lld",&n)!=EOF)
+    {
+        m=0;
+        if(n<0){ 
+          flag=1;
+          n = -n;  
+        }
+      else if(n>=0)
+        flag=0;
+      
+        while(n)
+        {
+            m=m*10+n%10;
+           if(flag==1&&m>2147483648){ 
+             printf("0\n");
+             flag=-1; 
+             break;
+            }
+            if(flag==0&&m>2147483647){
+            	printf("0\n");
+            	flag=-1;
+            	break;
+			}
+            
+		     n/=10;
+          
+        }
+     
+       if(flag==0)
+            printf("%lld\n",m);
+      else if(flag==1)
+	        printf("-%lld\n",m);
+    }
+    return 0;
+}
