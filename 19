@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+	long nums;
+	scanf("%ld",&nums);
+	int i=0,n;
+	for (int j=0;j<nums;j++) {
+		scanf("%d",&n);
+		if (n==0) {
+			i++;
+		}
+		else {
+			printf("%d\n",n);
+		}
+	}
+	for (int a=0;a<i;a++) {
+		printf("0\n");
+	}
+}
