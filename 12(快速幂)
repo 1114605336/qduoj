@@ -1,0 +1,31 @@
+#include <stdio.h>
+long long int powerr(long long int n,long long int m)
+{
+	long long int sum=1;
+	while(n!=0)
+		{
+			if(n%2)
+			{
+				sum=sum*m%1000007;
+				m=m*m%1000007;
+				n/=2;
+			}
+			else
+			{
+				m=m*m%1000007;
+				n/=2;
+			}
+		}
+	return sum%1000007;
+}
+int main()
+{
+	long long int n,m;
+	int t=0;
+	scanf("%d",&t);
+	while(t--)
+	{
+		scanf("%lld%lld",&n,&m);
+		printf("%lld\n",powerr(n,m));
+	}
+}
