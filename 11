@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	int k,i,s,j;
+	int a[100]={0};//存放n除二取余的得数 
+	long long int n;
+	while(~scanf("%lld",&n))
+	{
+		if(n==0)
+		printf("0\n");
+		else
+		{
+			i=0;
+			while(n/2!=0||n%2!=0)
+			{
+				a[i]=n%2;
+				i++;
+				n=n/2;
+			}
+			for(j=i-1;j>=0;j--)	//当开头出现0时，舍去(这个写法第一次见，感觉挺好的，用j确定非0位置) 
+			{
+				if(a[j]>0)
+				break;
+			}
+			for(;j>=0;j--)
+			printf("%d",a[j]);
+			printf("\n");
+		}
+	}
+	return 0;
+}
