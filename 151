@@ -1,0 +1,22 @@
+//实在想不动了，就放了一个网上看的
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
+using namespace std;
+int main()
+{
+    int t=0;
+    scanf("%d",&t);
+    while(t--)
+    {
+        long long int n=0;
+        long long int num=0;
+        scanf("%lld",&n);
+        while(n!=0)
+        {
+            num+=n/5;
+            n=n/5;
+        }
+        printf("%lld\n",num);
+    }
+}
