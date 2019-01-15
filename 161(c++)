@@ -1,0 +1,77 @@
+//考完试心累，从网上找的看了看就提交了
+#include <algorithm>
+#include <iostream>
+#include <string.h>
+#include <cstdio>
+#include <set>
+using namespace std;
+const int maxn = 100005;
+const int inf = 0x3f3f3f3f;
+int a[maxn], ans, up;
+set<int> s;
+set<int>::iterator it;
+void add()
+{
+	int k = up;
+	while(k > 1)
+	{
+		if(k/2*2 != k && k/2)
+		{
+			int kk = k/2*2;
+			while(kk <= up)
+			{
+				s.insert(kk);
+				kk <<= 1;
+			}
+		}
+		s.insert(k);
+		k >>= 1;
+	}
+	k = 1;
+	while(k <= up)
+	{
+		s.insert(k);
+		k <<= 1;
+	}
+}
+int calc(int x, int y)
+{
+	int cnt = 0;
+	while(x != y)
+	{
+		if(x > y) x /= 2;
+		else y /= 2;
+		++cnt;
+	}
+	return cnt;
+}
+int main()
+{
+	int n, k, flag, cnt, ej;
+	scanf("%d", &n); up = 0;
+	for(int i = 0; i < n; ++i)
+	{
+		scanf("%d", &a[i]);
+		up = max(up, a[i]);
+	}
+	add(); ans = inf;
+	for(it = s.begin(); it != s.end(); ++it)
+	{
+		ej = *it; cnt = 0; flag = 1;
+		while(ej%2 == 0) ej /= 2;
+		for(int i = 0; i < n; ++i)
+		{
+			int x = a[i];
+			while(x%ej != 0) x /= 2;
+			if(x == 0)
+			{
+				flag = 0;
+				break;
+			}
+			else cnt += calc(a[i], *it);
+		}
+		if(flag) ans = min(ans, cnt);
+	}
+	printf("%d\n", ans);
+	return 0;
+}
