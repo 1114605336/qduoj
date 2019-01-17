@@ -1,0 +1,17 @@
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+    int n,z;
+    scanf("%d",&z);
+    for(int i=0;i<z;i++)
+    {
+        scanf("%d",&n);
+        int b = n % 10; // 幂的规律为4次一循环 
+        int m = n % 4;
+        if (m == 0) m = 4;
+        m = pow(b, m);
+        printf ("%d\n", m % 10);
+    }
+    return 0;
+ } 
