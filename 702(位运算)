@@ -1,0 +1,29 @@
+#include<stdio.h>  
+#include<stdlib.h>  
+int find_num(int *num,int len)  
+ {  
+     int i;  
+     int even=0;  
+     int odd=0;  
+     for(i=0;i<len;i++){  
+         even |= odd&num[i];//every postion which 1 appear is odd,1 is appear again,the count of 1 is even,set 1;  
+         odd ^= num[i];//every postion,when the count of 1 is odd, the location of postion is set 1;  
+         int is_three = (even&odd);//every postion,from even to odd , the 1 postion, 1 is appear three times;  
+         int three_to_zero = ~is_three;//the postion which 1 is appear thhree time back to 0;  
+         even &= three_to_zero;  
+         odd &= three_to_zero;  
+     }  
+	 return odd;//is need return only appear two time ,return even;  
+ }  
+int main()  
+ {  
+ 	int n;
+ 	scanf("%d",&n);
+    int num[n];
+	for(int i=0;i<n;i++){
+		scanf("%d",&num[i]);
+	}  
+    int x=find_num(num,sizeof(num)/sizeof(int));  
+    printf("%d\n",x);  
+    return 0;  
+ }
