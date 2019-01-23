@@ -30,6 +30,6 @@ int main(){
 		else {
 			printf("DOWN\n");
 		}
-    }
-	return 0;
+       }
+       return 0;
 } 
